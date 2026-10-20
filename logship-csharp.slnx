@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="logship.tests/logship.tests.csproj" />
+  <Project Path="logship/logship.csproj" />
+</Solution>
