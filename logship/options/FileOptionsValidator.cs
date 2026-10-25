@@ -12,6 +12,8 @@ internal static class FileOptionsValidator
             errors.Add("Directory is required.");
         if (string.IsNullOrWhiteSpace(o.FileNamePattern) || !o.FileNamePattern.Contains("{date}"))
             errors.Add("FileNamePattern must contain {date}.");
+        else if (o.FileNamePattern.IndexOfAny(['/', '\\']) >= 0)
+            errors.Add("FileNamePattern must be a file name only, without folders. Use Directory for the folder.");
         if (!IsValidDatePattern(o.DatePattern))
             errors.Add("DatePattern is not a valid date format for file names.");
         if (o.MaxFileSizeBytes < 1) errors.Add("MaxFileSizeBytes must be at least 1.");

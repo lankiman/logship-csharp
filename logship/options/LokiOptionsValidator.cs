@@ -1,5 +1,3 @@
-using logship.options;
-
 namespace Logship.Options;
 
 internal static class LokiOptionsValidator

@@ -1,14 +1,27 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <RootNamespace>Logship</RootNamespace>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+
+    <!-- NuGet package metadata -->
+    <PackageId>Logship</PackageId>
+    <Version>0.1.0</Version>
+    <Authors>lankiman</Authors>
+    <Description>A Microsoft.Extensions.Logging provider that writes rolling log files and ships logs to Grafana Loki, without ever blocking or crashing your app.</Description>
+    <PackageTags>logging;ilogger;loki;grafana;file-logging;microsoft-extensions-logging</PackageTags>
+    <RepositoryUrl>https://github.com/lankiman/logship-csharp</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
     <InternalsVisibleTo Include="logship.tests" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.13" />
+    <None Include="../README.md" Pack="true" PackagePath="/" />
   </ItemGroup>
 
 </Project>
