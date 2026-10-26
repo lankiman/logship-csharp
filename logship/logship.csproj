@@ -11,6 +11,8 @@
     <PackageId>Logship</PackageId>
     <Version>0.1.0</Version>
     <Authors>lankiman</Authors>
+    <Copyright>Copyright (c) 2026 lankiman</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Description>A Microsoft.Extensions.Logging provider that writes rolling log files and ships logs to Grafana Loki, without ever blocking or crashing your app.</Description>
     <PackageTags>logging;ilogger;loki;grafana;file-logging;microsoft-extensions-logging</PackageTags>
     <RepositoryUrl>https://github.com/lankiman/logship-csharp</RepositoryUrl>

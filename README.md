@@ -198,4 +198,6 @@ dotnet test
 dotnet pack logship -c Release   # creates the .nupkg
 ```
 
-No license has been chosen yet. Add one before publishing to NuGet.
+## License
+
+[MIT](LICENSE)
