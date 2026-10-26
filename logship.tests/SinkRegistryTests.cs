@@ -36,6 +36,19 @@ public class SinkRegistryTests
     }
 
     [Fact]
+    public async Task A_url_with_or_without_the_push_path_is_the_same_destination()
+    {
+        await using var registry = Registry();
+
+        var bare = registry.GetLoki(Loki("http://loki:3100"));
+        var withPath = registry.GetLoki(Loki("http://loki:3100/loki/api/v1/push"));
+        var withPathAndSlash = registry.GetLoki(Loki("http://loki:3100/loki/api/v1/push/"));
+
+        Assert.Same(bare, withPath);
+        Assert.Same(bare, withPathAndSlash);
+    }
+
+    [Fact]
     public async Task Different_settings_get_different_sinks()
     {
         await using var registry = Registry();

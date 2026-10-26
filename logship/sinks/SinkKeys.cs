@@ -26,9 +26,23 @@ internal sealed record LokiSinkKey(
     TimeSpan RetryBackoff)
 {
     public static LokiSinkKey From(LokiSinkOptions o) => new(
-        o.Url.TrimEnd('/'), o.AppLabel, o.JobLabel, o.Environment, o.OrgId, o.AuthType,
+        NormalizeUrl(o.Url), o.AppLabel, o.JobLabel, o.Environment, o.OrgId, o.AuthType,
         o.Username, o.Password, o.Token, o.FlushInterval, o.BatchSize, o.BufferCap,
         o.Timeout, o.MaxRetries, o.RetryBackoff);
+
+    // "http://loki:3100" and "http://loki:3100/loki/api/v1/push" reach the same endpoint,
+    // so they must make the same key. The key uses the endpoint the sink will really call.
+    private static string NormalizeUrl(string? url)
+    {
+        try
+        {
+            return LokiSink.BuildEndpoint(url ?? string.Empty).AbsoluteUri;
+        }
+        catch (UriFormatException)
+        {
+            return (url ?? string.Empty).TrimEnd('/');
+        }
+    }
 
     // The generated ToString would print every field, including the password and token.
     public override string ToString() => nameof(LokiSinkKey);
